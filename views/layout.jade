@@ -3,7 +3,40 @@ html(lang='en')
 	head
 		meta(charset="utf-8")
 		title Untitled
-
+		link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css")
+		link(rel="stylesheet", href="css/main.css")
 	body
 		block content
-		
+
+		//- Handlebars templates
+		include templates/course-search
+		include templates/course
+		include templates/electives-list
+		include templates/required-list
+		include templates/schedule
+		include templates/semester
+		include templates/year
+
+		//- Vendor cdns
+		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js")
+		script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js')
+		script(src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js")
+		script(src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js')		
+		//- Models
+		script(src="/js/lib/models/course-model.js")
+
+		//- Collections
+		script(src="/js/lib/collections/course-catalog.js")
+			
+		//- Views
+		script(src="/js/lib/views/course-search-view.js")
+		script(src="/js/lib/views/course-view.js")
+		script(src="/js/lib/views/electives-list-view.js")
+		script(src="/js/lib/views/required-list-view.js")
+		script(src="/js/lib/views/schedule-view.js")
+		script(src="/js/lib/views/semester-view.js")
+		script(src="/js/lib/views/year-view.js")
+
+		//- Scripts
+		script(src="js/main.js")

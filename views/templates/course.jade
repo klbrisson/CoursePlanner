@@ -1,7 +1,7 @@
 script#course-template(type="text/x-handlebars-template")
 	li.course
-		.course-header Code, Name, Credits
+		.course-header {{department}}{{code}}, {{name}}, {{credits}}
 		.course-details.
-			Description
-			Semesters Offered
-			Prerequisites Needed
+			{{description}}
+			{{semesters}}
+			{{prereqs}}
