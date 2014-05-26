@@ -1,0 +1,9 @@
+script#course-search-template(type="text/x-handlebars-template")
+	.course-search-container
+		form
+			.form-group
+				label.sr-only(for="course-search") Search
+				input#course-search(name="course-search" type="text" placeholder="Search")
+			.form-group
+				input#prereq-filter(name="prereq-filter" type="checkbox")
+				label(for="prereq-filter") Prerequisites Fulfilled
