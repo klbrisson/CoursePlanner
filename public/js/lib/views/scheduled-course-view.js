@@ -1,4 +1,4 @@
-var CourseView = Backbone.View.extend({
+var ScheduledCourseView = Backbone.View.extend({
 
 	initialize: function() {
 		this.renderTemplate = Handlebars.compile($('#course-template').html());

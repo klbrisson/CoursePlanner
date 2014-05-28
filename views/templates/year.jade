@@ -1,7 +1,10 @@
 script#year-template(type="text/x-handlebars-template")
-	.year.row
-		.col-xs-12.col-sm-6.fall Fall Semester
-		.col-xs-12.col-sm-6.spring Spring Semester
-		.col-xs-12.summer
-			button.show-summer-btn.btn.btn-default
-			div Summer Semester
+	.year.row(data-year={{year}})
+		each semester in ['Fall','Spring','Summer']
+			.col-xs-12.col-sm-6
+				.semester-container
+					.semester-header= semester
+					ul.semester(data-semester= semester.toLowerCase())
+					//- Need to find a way to get the total credits
+					//- .semester-footer Credits: {{credits}}
+

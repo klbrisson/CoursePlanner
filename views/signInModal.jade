@@ -1,0 +1,14 @@
+.modal.fade#signInBox(tabindex="-1" aria-labelledby="signInBox" aria-hidden="true")
+	.modal-dialog.modal-sm
+		.modal-content
+			.modal-header
+				button.close(type="button" data-dismiss="modal" aria-hidden="true") &times;
+				h4.modal-title#signInBoxLabel Sign In
+			.modal-body
+				form
+					.form-group
+						input.form-control#username(type="text" placeholder="Username")
+					.form-group
+						input.form-control#password(type="password" placeholder="Password")
+			.modal-footer
+				button.btn.btn-primary(type="button" data-dismiss="modal") Sign In

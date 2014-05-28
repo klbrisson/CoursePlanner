@@ -1,10 +1,10 @@
 var Course = Backbone.Model.extend({
 	defaults: {
-		department: 'CS',
+		department: 'DEPT',
 		code: '100',
-		name: 'CS Something',
+		name: 'Course Name',
 		credits: 0,
 		semesters: ['F','S','SS'],
-		description: 'a CS course'
+		description: 'Course Description'
 	}
 });
