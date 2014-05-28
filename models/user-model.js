@@ -10,29 +10,15 @@ var userSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	schedules: {
-		type: [
-			{	semester: String,
-				year: String,
-				courses: [{
-					type: mongoose.Schema.Types.ObjectId,
-		      ref: 'Course'
-				}]
-			}
-		],
+	schedule: {
+		type: {
+			startYear: Number,
+			endYear: Number,
+			courses: [{
+				type: mongoose.Schema.Types.ObjectId,
+      	ref: 'Course'
+			}]
+		},
 		required: false
 	}
 });
-
-
-/*
-schedule: [
-	{	semester: String,
-		year: String,
-		courses: [{
-			type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course'
-		}]
-	}
-]
-*/

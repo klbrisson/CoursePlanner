@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 app.get('/schedule')
 app.post('/schedule')
 
-app.get('/course', courseController.getCourses);
+app.get('/courses', courseController.getCourses);
 
 
 var server = app.listen(3000, function() {

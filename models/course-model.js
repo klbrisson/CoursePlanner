@@ -6,5 +6,11 @@ var Course = mongoose.model('course', {
 		name: String,
 		credits: Number,
 		semesters: [String],
-		description: String
+		description: String,
+		prereqs: [{
+			type: mongoose.Schema.Types.ObjectId,
+      ref: 'Course'
+		}]
 });
+
+module.exports = Course;

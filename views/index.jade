@@ -3,13 +3,15 @@ extends layout
 block content
 	.container
 		h1 Course Planner
-		.row
-			.course-list-container.col-xs-12.col-sm-4
-			.schedule-container.col-xs-12.col-sm-8
-				.year.row
-					each semester in ['Fall','Spring','Summer']
-						.col-xs-12.col-sm-6
-							.semester-container
-								.semester-header= semester
-								.semester(class= semester.toLowerCase())
-								.semester-footer Credits:
+		#test-courses
+		#test2
+		//- .row
+		//- 	.course-list-container.col-xs-12.col-sm-4
+		//- 	.schedule-container.col-xs-12.col-sm-8
+		//- 		.year.row
+		//- 			each semester in ['Fall','Spring','Summer']
+		//- 				.col-xs-12.col-sm-6
+		//- 					.semester-container
+		//- 						.semester-header= semester
+		//- 						.semester(class= semester.toLowerCase())
+		//- 						.semester-footer Credits:

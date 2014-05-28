@@ -5,6 +5,7 @@ var Course = Backbone.Model.extend({
 		name: 'Course Name',
 		credits: 0,
 		semesters: ['F','S','SS'],
-		description: 'Course Description'
+		description: 'Course Description',
+		prereqs: []
 	}
 });

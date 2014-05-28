@@ -3,6 +3,7 @@ var Course = require('../models/course-model.js');
 
 module.exports = {
 	getCourses: function(req, res) {
+		console.log(req);
 		Course.find({}, function(err, courses) {
 			if(err) {
 				console.log('Error:', err);
