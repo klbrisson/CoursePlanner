@@ -8,70 +8,39 @@ MyApp.addRegions({
     region2: "#test2"
 });
 
-// Course = Backbone.Model.extend({});
-
-// CourseList = Backbone.Collection.extend({
-//     model: Course
-// });
-
-// CourseView = Backbone.Marionette.ItemView.extend({
-//     template: Handlebars.compile($('#course-template').html()),
-//     tagName: 'li',
-//     className: 'course list-group-item'
-// });
-
-// CourseListView = Backbone.Marionette.CompositeView.extend({
-//   // tagName: "ul",
-//   // id: "course-list-container",
-//   className: "course-list-container",
-//   template: Handlebars.compile($('#course-list-template').html()),
-//   // template: "#course-list-template",
-//   itemView: CourseView,
-  
-//   appendHtml: function(collectionView, itemView){
-//     collectionView.$(".course-list").append(itemView.el);
-//   }
-// });
-
-
 
 MyApp.addInitializer(function(options) {
     var courseListView = new CourseListView({
         collection: options.courses
     });
-    // var courseListView2 = new CourseListView({
-    //     collection: options.courses2
-    // });
+    var courseListView2 = new CourseListView({
+        collection: options.courses2
+    });
     MyApp.mainRegion.show(courseListView);
-    // MyApp.region2.show(courseListView2);
+    MyApp.region2.show(courseListView2);
 
 });
 
 $(document).ready(function() {
-    // Here we create a bunch of models at the same time as the collection.
-    var courses = new CourseList();
-    courses.fetch();
+    // Creates a collection of all courses and fetches them from the database
+    var fullCourseList = new CourseList();
+    fullCourseList.fetch({reset: true});
 
-    // var courses2 = new CourseList([
-    //     new Course({
-    //       name: 'Course 4'
-    //   }),
-    //       new Course({
-    //       name: 'Course 5'
-    //   }),
-    //       new Course({
-    //       name: 'Course 6'
-    //   })
-    // ]);
+    // Creates new collections by filtering the fullCourseList after
+    // the data is retrieved from the database
+    fullCourseList.on('reset', function(){
+      var courses2 = new CourseList(_.filter(fullCourseList.models, function(course){
+        console.log(course.attributes)
+        return course.attributes.credits === 3;
+      }))
 
+      MyApp.start({
+        courses: fullCourseList,
+        courses2: courses2
+      });
 
-
-    MyApp.start({
-        courses: courses
-        // courses2: courses2
-    });
-
-
+    })
+    
 
 
     // TODO: find a better way to make the lists sortable
