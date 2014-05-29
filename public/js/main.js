@@ -1,27 +1,35 @@
-
-
-
+//-------------- Backbone Marionette App Settings ---------------------
 MyApp = new Backbone.Marionette.Application();
 
 MyApp.addRegions({
-    mainRegion: "#test-courses",
-    region2: "#test2"
+    requiredCourseRegion: "#required-course-list",
+    electiveCourseRegion: "#elective-course-list",
+    semesterCourseRegion: "#semester-course-list"
 });
-
 
 MyApp.addInitializer(function(options) {
-    var courseListView = new CourseListView({
-        collection: options.courses
+
+    var requiredCourseListView = new CourseListView({
+      collection: options.coursesCS
     });
-    var courseListView2 = new CourseListView({
-        collection: options.courses2
+    var electiveCourseListView = new CourseListView({
+      collection: options.coursesART
     });
-    MyApp.mainRegion.show(courseListView);
-    MyApp.region2.show(courseListView2);
+    var semesterCourseListView = new ScheduledCourseListView({
+      className: 'course-list-container droppable',
+      collection: options.coursesMATH
+    }); 
+
+    MyApp.requiredCourseRegion.show(requiredCourseListView);
+    MyApp.electiveCourseRegion.show(electiveCourseListView);
+    MyApp.semesterCourseRegion.show(semesterCourseListView);
 
 });
 
+
+
 $(document).ready(function() {
+
     // Creates a collection of all courses and fetches them from the database
     var fullCourseList = new CourseList();
     fullCourseList.fetch({reset: true});
@@ -29,55 +37,30 @@ $(document).ready(function() {
     // Creates new collections by filtering the fullCourseList after
     // the data is retrieved from the database
     fullCourseList.on('reset', function(){
-      var courses2 = new CourseList(_.filter(fullCourseList.models, function(course){
-        console.log(course.attributes)
-        return course.attributes.credits === 3;
+      // Creates a course list of only CS courses -- for testing
+      var coursesCS = new CourseList(fullCourseList.filter(function(course){
+        return course.attributes.department === 'CS';
+      }))
+
+      // Creates a course list of only ART courses -- for testing
+      var coursesART = new CourseList(fullCourseList.filter(function(course){
+        return course.attributes.department === 'ART';
+      }))
+
+      // // Creates a course list of only MATH courses -- for testing
+      var coursesMATH = new ScheduledCourseList(fullCourseList.filter(function(course){
+        return course.attributes.department === 'MATH';
       }))
 
       MyApp.start({
-        courses: fullCourseList,
-        courses2: courses2
+        coursesART: coursesART,
+        coursesCS: coursesCS,
+        coursesMATH: coursesMATH
       });
 
     })
     
-
-
-    // TODO: find a better way to make the lists sortable
-    $(document).on('click', '.course', function() {
-      $('.sortable').sortable();
-      $('.sortable, .sortable').sortable({
-          connectWith: '.connected'
-      });
-    })
-    
-   
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -140,52 +123,6 @@ $(document).ready(function() {
 // 		run updateCourse whenever a change is made to that courseListView
 
 // */
-
-
-
-
-
-
-// $(document).ready(function() {
-// 	// Render Years
-// 	var renderYear = Handlebars.compile($('#year-template').html());
-// 	for (var i = User.Schedule.startYear; i<= User.Schedule.endYear; i++) {
-// 		renderYear({year: i});
-// 	}
-
-
-// var testCourse = new Course();
-// var testCourse2 = new Course({name: 'Course2'});
-
-
-// var courses = [testCourse, testCourse2];
-
-// // var renderYear = Handlebars.compile($('#year-template').html());
-// // $('#test').append(renderYear({credits: 3}));
-
-
-// var courseListView = new CourseListView({collection: courses});
-// courseListView.setElement($('.fall'));
-// courseListView.render();
-
-
-
-
-
-// // var courseView = new CourseView({model: testCourse});
-// // courseView.setElement($('.spring'));
-// // courseView.render();
-
-// // var courseView2 = new CourseView({model: testCourse2});
-// // courseView2.setElement($('.fall'));
-// // courseView2.render();
-
-// // courses.map(function(course){
-// // 	var newCourseView = new CourseView({model: course});
-// // 	newCourseView.setElement($('.fall'));
-// // 	newCourseView.render();
-// // })
-
 
 
 
