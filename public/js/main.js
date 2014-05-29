@@ -2,26 +2,36 @@
 MyApp = new Backbone.Marionette.Application();
 
 MyApp.addRegions({
+    // Create regions for the list of required courses and list of electives
     requiredCourseRegion: "#required-course-list",
     electiveCourseRegion: "#elective-course-list",
-    semesterCourseRegion: "#semester-course-list"
+
+    // Create regions for each semester in the schedule
+    semesterCourseRegion: ".spring.semester-course-list"
 });
 
-MyApp.addInitializer(function(options) {
 
+MyApp.addInitializer(function(options) {
+    // Create CourseListViews for the list of required courses
+    // and the list of elective courses
     var requiredCourseListView = new CourseListView({
       collection: options.coursesCS
     });
     var electiveCourseListView = new CourseListView({
       collection: options.coursesART
     });
-    var semesterCourseListView = new ScheduledCourseListView({
-      className: 'course-list-container droppable',
+
+    // Create ScheduledCourseListView for the list of courses in each semester
+    var semesterCourseListView = new SchedCourseListView({
       collection: options.coursesMATH
     }); 
+    
 
+    // Show the lists of required and elective courses in their corresponding region
     MyApp.requiredCourseRegion.show(requiredCourseListView);
     MyApp.electiveCourseRegion.show(electiveCourseListView);
+
+    // Show the list for each semester in its corresponding region
     MyApp.semesterCourseRegion.show(semesterCourseListView);
 
 });
@@ -48,9 +58,10 @@ $(document).ready(function() {
       }))
 
       // // Creates a course list of only MATH courses -- for testing
-      var coursesMATH = new ScheduledCourseList(fullCourseList.filter(function(course){
+      var coursesMATH = new SchedCourseList(fullCourseList.filter(function(course){
         return course.attributes.department === 'MATH';
       }))
+
 
       MyApp.start({
         coursesART: coursesART,

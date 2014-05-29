@@ -13,4 +13,8 @@ nav#main-navbar.navbar.navbar-default
 				li: a(href="#") Weekly Schedule
 				li: a(href="#") Full Course Catalog
 			ul.nav.navbar-nav.navbar-right
-				li: a(href="#" data-toggle="modal" data-target="#signInBox") Sign In 
+				if loggedIn
+					li: a(href="#")= user.username
+					li: a(href="/auth/logout") Log Out
+				else
+					li: a(href="#" data-toggle="modal" data-target="#signInBox") Sign In

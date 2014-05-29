@@ -5,10 +5,20 @@
 				button.close(type="button" data-dismiss="modal" aria-hidden="true") &times;
 				h4.modal-title#signInBoxLabel Sign In
 			.modal-body
-				form
+				h3 Sign Up
+				form(method="post" action="/auth/signup")
 					.form-group
-						input.form-control#username(type="text" placeholder="Username")
+						input.form-control#username(type="text" name="username" placeholder="Username")
 					.form-group
-						input.form-control#password(type="password" placeholder="Password")
+						input.form-control#password(type="password" name="password" placeholder="Password")
+					.form-group
+						input.btn.btn-primary(type="submit")
+				h3 Sign In
+				form(method="post" action="/auth/login")
+					.form-group
+						input.form-control#username(type="text" name="username" placeholder="Username")
+					.form-group
+						input.form-control#password(type="password" name="password" placeholder="Password")
+					.form-group
+						input.btn.btn-primary(type="submit")
 			.modal-footer
-				button.btn.btn-primary(type="button" data-dismiss="modal") Sign In

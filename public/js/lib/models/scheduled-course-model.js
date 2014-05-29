@@ -1,4 +1,4 @@
-var ScheduledCourse = Backbone.Model.extend({
+var SchedCourse = Backbone.Model.extend({
 	defaults: {
 		year: 'year',
 		semester: 'semester',

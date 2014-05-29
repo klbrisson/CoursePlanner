@@ -25,7 +25,7 @@ CourseListView = Backbone.Marionette.CompositeView.extend({
   },
 
   events: {
-  	"drop" : "test"
+  	'drop' : 'test'
   }
 
 });
