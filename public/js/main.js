@@ -15,10 +15,10 @@ MyApp.addInitializer(function(options) {
   // Create CourseListViews for the list of required courses
   // and the list of elective courses
   var requiredCourseListView = new CourseListView({
-    collection: options.coursesCS
+    collection: options.requiredCourses
   });
   var electiveCourseListView = new CourseListView({
-    collection: options.coursesART
+    collection: options.electiveCourses
   });
 
   // Create ScheduledCourseListView for the list of courses in each semester
@@ -26,12 +26,12 @@ MyApp.addInitializer(function(options) {
     collection: options.coursesMATH
   }); 
 
-  var emptySchedListView = new SchedCourseListView({
-    collection: options.userCourseList
+  var userSchedListView = new SchedCourseListView({
+    collection: options.userCourses
   })
 
   // Create Layouts
-  var scheduleLayout = new ScheduleLayout()
+  var scheduleLayout = new ScheduleLayout();
   var yearLayout = new YearLayout();
   var yearLayout2 = new YearLayout();
 
@@ -44,68 +44,59 @@ MyApp.addInitializer(function(options) {
   scheduleLayout.year.show(yearLayout);
   scheduleLayout.year2.show(yearLayout2);
   yearLayout.fall.show(semesterCourseListView);
-  yearLayout.spring.show(emptySchedListView);
+  yearLayout.spring.show(userSchedListView);
 
 });
 
 
 
 
-var testUser;
 $(document).ready(function() {
 
   // Creates a collection of all courses and fetches them from the database
   var fullCourseList = new CourseList();
 
-
-  testUser = new UserSchedule({id: "538768b592f1bb6c25bed199"});
-  fullCourseList.fetch({reset: true});
-
-  // testUser.fetch({reset: true});
-  console.log(testUser);
-
-  testUser.on('reset', function(){
-    console.log('testUser reset')
-  })
-  
+  var testUser = new UserSchedule({id: userId});
 
   // Creates new collections by filtering the fullCourseList after
   // the data is retrieved from the database
-  fullCourseList.on('reset', function(){
-    // Creates a course list of only CS courses -- for testing
-    var coursesCS = new CourseList(fullCourseList.filter(function(course){
+  fullCourseList.fetch().done(function(){
+
+    // Creates a course list of required courses -- using 'CS' to filter for now
+    var requiredCourses = new CourseList(fullCourseList.filter(function(course){
       return course.attributes.department === 'CS';
     }))
 
-    // Creates a course list of only ART courses -- for testing
-    var coursesART = new CourseList(fullCourseList.filter(function(course){
+    // Creates a course list of elective courses -- using 'ART' to filter for now
+    var electiveCourses = new CourseList(fullCourseList.filter(function(course){
       return course.attributes.department === 'ART';
     }))
 
-    // Creates a course list of only MATH courses -- for testing
-    var coursesMATH = new SchedCourseList(fullCourseList.filter(function(course){
-      return course.attributes.department === 'MATH';
-    }))
-    console.log(fullCourseList.filter(function(course){
-      return course.attributes.department === 'E';
-    }))
-    // Empty list test
-    // var emptyList = new SchedCourseList();
 
-    // Test user course list
-    testUser.fetch().done(function(){
-      var userCoursesArray = fullCourseList.filter(function(course){
-        return course.attributes._id === testUser.attributes.schedCourses[0].courseId
-      })
-      var userCourseList = new SchedCourseList(userCoursesArray);
+    // User Courses
+    if(userId !== null){
+      testUser.fetch().done(function(){
 
-      MyApp.start({
-        coursesART: coursesART,
-        coursesCS: coursesCS,
-        coursesMATH: coursesMATH,
-        userCourseList: userCourseList
+        // Creates a course list of courses the user has saved
+        var userCourses = new SchedCourseList(fullCourseList.filter(function(course){
+          return course.attributes._id === testUser.attributes.schedCourses[0].courseId
+        }));
+
+        MyApp.start({
+          electiveCourses: electiveCourses,
+          requiredCourses: requiredCourses,
+          userCourses: userCourses
+        });
       });
-    });
+    }
+
+    // Starts the app without userCourses if no user is signed in
+    else{
+      MyApp.start({
+        electiveCourses: electiveCourses,
+        requiredCourses: requiredCourses,
+      });
+    }
 
   })
     

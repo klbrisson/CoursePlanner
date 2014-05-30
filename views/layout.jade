@@ -47,4 +47,11 @@ html(lang='en')
 		script(src="/js/lib/layouts/schedule-layout.js")
 
 		//- Scripts
+		script(type="text/javascript").
+			// Script to make the userId available to front end javascript
+			var user = !{JSON.stringify(user || null)};
+			var userId = null;
+			if(user !== null){
+				userId = user._id;
+			}
 		script(src="js/main.js")
