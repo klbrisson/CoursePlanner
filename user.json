@@ -1,0 +1,17 @@
+[{
+ "username" : "user",
+ "password" : "$2a$10$nenDGLONAEP7nMiIp/r9qe2PiJvJ1CyhMM5sK6pRq6wczMUpUG3Rq",
+ "_id" : { "$oid" : "538762bb3caf35a21b0d305a" },
+ "__v" : 0 
+ },
+{ 
+"username" : "Kelsey",
+ "password" : "$2a$10$vV8gFYdnYHuiA7J8BuUI7u/x9rEakTEXe4S7ko1.6YwwKAU4jP0oW",
+ "_id" : { "$oid" : "538768b592f1bb6c25bed199" },
+ "__v" : 0,
+ "schedule" : {
+	 	"startYear" : 2014,
+	 	"endYear" : 2018,
+	 	"schedCourses" : [{ "year" : 2014, "semester" : "fall", "courseId" : "5386058eea0146d84d641eaa"}]
+ 	}
+ }]

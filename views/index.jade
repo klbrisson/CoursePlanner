@@ -9,12 +9,4 @@ block content
 				.course-list-container#required-course-list
 				h3 Elective Courses
 				.course-list-container#elective-course-list
-
 			.schedule-container.col-xs-12.col-sm-8
-				.year.row
-					each semester in ['Fall','Spring','Summer']
-						.col-xs-12.col-sm-6
-							.semester-container
-								.semester-header= semester
-								.semester(class= semester.toLowerCase()).semester-course-list
-								.semester-footer Credits:

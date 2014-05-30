@@ -1,10 +1,8 @@
 script#year-template(type="text/x-handlebars-template")
-	.year.row(data-year= year)
-		each semester in ['Fall','Spring','Summer']
-			.col-xs-12.col-sm-6
-				.semester-container
-					.semester-header= semester
-					ul.semester(data-semester= semester.toLowerCase())
-					//- Need to find a way to get the total credits
-					.semester-footer Credits: {{credits}}
-
+	//- .year.row
+	h2 year
+	each semester in ['Fall','Spring','Summer']
+		.col-xs-12.col-sm-6.semester-container
+			.semester-header= semester
+			div(class='semester #{semester.toLowerCase()}')
+			.semester-footer Credits:

@@ -1,5 +1,5 @@
 SchedCourseListView = Backbone.Marionette.CompositeView.extend({
-  className: "scheduled-course-list-container",
+  className: 'scheduled-course-list-container',
   
   template: Handlebars.compile($('#course-list-template').html()),
   
@@ -25,7 +25,7 @@ SchedCourseListView = Backbone.Marionette.CompositeView.extend({
   },
 
   events: {
-    "drop" : "test"
+    'drop' : 'test'
   }
 
 });

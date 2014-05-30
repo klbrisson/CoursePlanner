@@ -1,3 +1,9 @@
 .course-details {
 	display: none;
 }
+/*.course {
+	max-width: 200px;
+}*/
+.scheduled-course-list-container {
+	min-height: 200px;
+}

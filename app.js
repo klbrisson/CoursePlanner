@@ -11,6 +11,7 @@ var passportConfig = require('./config/passport');
 
 // Controllers
 var courseController = require('./controllers/course-controller.js');
+var userController = require('./controllers/user-controller.js');
 var authenticationController = require('./controllers/authentication.js');
 var indexController = require('./controllers/index-controller.js');
 
@@ -37,6 +38,8 @@ app.get('/', indexController.renderIndex);
 // app.post('/schedule')
 
 app.get('/courses', courseController.getCourses);
+
+app.get('/users/:id', userController.getSchedule);
 
 
 // Our get request for viewing the login page
