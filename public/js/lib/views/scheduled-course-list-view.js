@@ -5,14 +5,8 @@ SchedCourseListView = Backbone.Marionette.CompositeView.extend({
   
   itemView: SchedCourseView,
 
-  initialize: function() {
-    this.on('render', function() {
-      this.$el.droppable({
-        drop: function() {
-          console.log('dropped into ScheduledCourseListView');
-        }
-      })
-    })
+  onRender: function() {
+    this.$el.droppable();
   },
 
   appendHtml: function(collectionView, itemView){
@@ -20,12 +14,15 @@ SchedCourseListView = Backbone.Marionette.CompositeView.extend({
     itemView.$el.draggable({ revert: true });
   },
 
-  test: function(){
-    console.log('item was dropped into view');
+  drop: function(event, ui) {
+    // console.log('dropped into ScheduledCourseListView');
+    var droppedCourseId = $(ui.draggable[0]).data('id');
+    console.log(droppedCourseId);
+    this.trigger('dropped', { courseId: droppedCourseId })
   },
 
   events: {
-    'drop' : 'test'
+    'drop' : 'drop'
   }
 
 });

@@ -78,9 +78,23 @@ $(document).ready(function() {
       testUser.fetch().done(function(){
 
         // Creates a course list of courses the user has saved
+        // Currently just getting the first course in the user's schedule
+        // 
         var userCourses = new SchedCourseList(fullCourseList.filter(function(course){
           return course.attributes._id === testUser.attributes.schedCourses[0].courseId
         }));
+
+
+
+        // var newSchedCourse = new SchedCourse();
+        // var newSchedCourse2 = new SchedCourse();
+        // var test = [newSchedCourse, newSchedCourse2];
+
+        // var testColleciton = new SchedCourseList(test);
+
+        // console.log('Elective Courses:', electiveCourses);
+        // console.log('User Courses', userCourses);
+        // console.log('testColleciton', testColleciton);
 
         MyApp.start({
           electiveCourses: electiveCourses,
