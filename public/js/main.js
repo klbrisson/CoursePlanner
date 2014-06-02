@@ -23,11 +23,17 @@ MyApp.addInitializer(function(options) {
 
   // Create ScheduledCourseListView for the list of courses in each semester
   var semesterCourseListView = new SchedCourseListView({
-    collection: options.coursesMATH
+    collection: options.userCourses,
+    courseList: options.fullCourseList,
+    year: 2014,
+    semester: 'Fall'
   }); 
 
   var userSchedListView = new SchedCourseListView({
-    collection: options.userCourses
+    collection: options.userCourses,
+    courseList: options.fullCourseList,
+    year: 2015,
+    semester: 'Spring'
   })
 
   // Create Layouts
@@ -73,44 +79,44 @@ $(document).ready(function() {
     }))
 
 
-    // User Courses
-    if(userId !== null){
-      testUser.fetch().done(function(){
-
-        // Creates a course list of courses the user has saved
-        // Currently just getting the first course in the user's schedule
-        // 
-        var userCourses = new SchedCourseList(fullCourseList.filter(function(course){
-          return course.attributes._id === testUser.attributes.schedCourses[0].courseId
-        }));
+    var userCourses = new SchedCourseList();
 
 
+    // // User Courses
+    // if(userId !== null){
+    //   testUser.fetch().done(function(){
 
-        // var newSchedCourse = new SchedCourse();
-        // var newSchedCourse2 = new SchedCourse();
-        // var test = [newSchedCourse, newSchedCourse2];
+    //     // Creates a course list of courses the user has saved
+    //     // Currently just getting the first course in the user's schedule
+    //     // 
+    //     // var userCourses = new SchedCourseList(fullCourseList.filter(function(course){
+    //     //   return course.attributes._id === testUser.attributes.schedCourses[0].courseId
+    //     // }));
 
-        // var testColleciton = new SchedCourseList(test);
+    //     var userCourses = new SchedCourseList();
 
-        // console.log('Elective Courses:', electiveCourses);
-        // console.log('User Courses', userCourses);
-        // console.log('testColleciton', testColleciton);
-
-        MyApp.start({
-          electiveCourses: electiveCourses,
-          requiredCourses: requiredCourses,
-          userCourses: userCourses
-        });
-      });
-    }
+    //     MyApp.start({
+    //       electiveCourses: electiveCourses,
+    //       requiredCourses: requiredCourses,
+    //       userCourses: userCourses,
+    //       fullCourseList: fullCourseList,
+    //       year: 2014,
+    //       semester: 'semester'
+    //     });
+    //   });
+    // }
 
     // Starts the app without userCourses if no user is signed in
-    else{
+    // else{
       MyApp.start({
         electiveCourses: electiveCourses,
         requiredCourses: requiredCourses,
+        fullCourseList: fullCourseList,
+        userCourses: userCourses,
+        year: 'year',
+        semester: 'semester'
       });
-    }
+    // }
 
   })
     

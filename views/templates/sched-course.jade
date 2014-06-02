@@ -1,0 +1,7 @@
+script#sched-course-template(type="text/x-handlebars-template")
+	.course-header
+		p. {{courseInfo.attributes.department}}{{courseInfo.attributes.code}} - {{courseInfo.attributes.name}} - Credits: {{courseInfo.attributes.credits}}
+	.course-details.
+		Description: {{courseInfo.attributes.description}}
+		Semesters Offered: {{courseInfo.attributes.semesters}}
+		Prerequisites: {{courseInfo.attributes.prereqs}}

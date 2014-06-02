@@ -1,4 +1,4 @@
-CourseList = Backbone.Collection.extend({
+var CourseList = Backbone.Collection.extend({
     model: Course,
     url: '/courses'
 });
