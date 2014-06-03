@@ -12,7 +12,8 @@
  "schedule" : {
 	 	"startYear" : 2014,
 	 	"endYear" : 2018,
-	 	"schedCourses" : [{ "year" : 2014, "semester" : "Fall", "courseId" : "5386058eea0146d84d641eaa"},
-	 	{ "year" : 2015, "semester" : "Spring", "courseId" : "5386058eea0146d84d641eb4"}]
+	 	"schedCourses" : [{ "year" : 2014, "semester" : "Fall", "courseInfo" : "5386058eea0146d84d641eaa"},
+	 	{ "year" : 2015, "semester" : "Spring", "courseInfo" : "5386058eea0146d84d641eb4"},
+	 	{ "year" : 2015, "semester" : "Spring", "courseInfo" : "5386058eea0146d84d641eab"}]
  	}
  }]

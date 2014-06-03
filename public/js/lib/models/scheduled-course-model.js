@@ -1,7 +1,7 @@
 var SchedCourse = Backbone.Model.extend({
 	// defaults: {
 	// 	year: 2014,
-	// 	semester: 'Semester',
+	// 	semester: 'Fall',
 	// 	course: 'Course Object'
 	// }
 });

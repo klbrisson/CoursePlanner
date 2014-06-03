@@ -5,7 +5,6 @@ var SchedCourseView = Backbone.Marionette.ItemView.extend({
 
   onRender: function() {
     this.$el.attr('data-id', this.model.attributes.courseInfo.attributes._id);
-    this.$el.draggable({ revert: true });
   },
 
   showDetails: function() {

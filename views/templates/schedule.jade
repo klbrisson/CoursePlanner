@@ -1,7 +1,15 @@
 script#schedule-template(type="text/x-handlebars-template")
-	h2.schedule-title
-	if loggedIn
-		- for (var year = user.schedule.startYear; year <= user.schedule.endYear; year++) {
-			.year.row Year: #{year}
-		- }
+	h2.schedule-title Schedule
+	- var startYear = loggedIn ? user.schedule.startYear : 2014;
+	- var endYear = loggedIn ? user.schedule.endYear : 2018;
+	- for (var year = startYear; year < endYear; year++) {
+		.year.row(id= 'year-#{year}')
+			h4 Year: #{year} - #{year + 1}
+			.col-xs-12.col-sm-6 Fall #{year}
+				ul.fall.course-list.list-unstyled.list-group.semester(id= 'fall-#{year}')
+			.col-xs-12.col-sm-6 Spring #{year + 1}
+				ul.spring.course-list.list-unstyled.list-group.semester(id= 'spring-#{year + 1}')
+			.col-xs-12.col-sm-6 Summer #{year + 1}
+				ul.summer.course-list.list-unstyled.list-group.semester(id= 'summer-#{year + 1}')
+	- }
 

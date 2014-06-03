@@ -16,13 +16,13 @@ var userSchema = mongoose.Schema({
 			startYear: Number,
 			endYear: Number,
 			schedCourses: [{
-          year: Number,
-          semester: String,
-          courseId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Course'
-          }
-        }]
+        year: Number,
+        semester: String,
+        courseInfo: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Course'
+        }
+      }]
 		},
 		required: false
 	}
