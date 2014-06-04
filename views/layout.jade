@@ -4,9 +4,9 @@ html(lang='en')
 		meta(charset="utf-8")
 		title Course Planner
 		link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css")
-		link(rel="stylesheet", href="css/main.css")
+		link(rel="stylesheet", href="/css/main.css")
 	body
-		include signInModal
+		//- include signInModal
 		include navbar
 		block content
 
@@ -15,7 +15,6 @@ html(lang='en')
 		include templates/course-search
 		include templates/course
 		include templates/schedule
-		//- include templates/year
 		include templates/sched-course
 
 		//- Vendor cdns
@@ -47,8 +46,6 @@ html(lang='en')
 		script(type="text/javascript").
 			// Script to make the userId available to front end javascript
 			var user = !{JSON.stringify(user || null)};
-			var userId = null;
-			if(user !== null){
-				userId = user._id;
-			}
-		script(src="js/main.js")
+			var userId = user ? user._id : null;
+			
+		script(src="/js/main.js")

@@ -1,9 +1,15 @@
 .course-details {
 	display: none;
 }
-/*.course {
-	max-width: 200px;
-}*/
-.course-list {
+
+.semester, .course-list {
 	min-height: 200px;
+}
+
+.sched-error {
+	background-color: red;
+}
+
+.prereq-error, .semester-error {
+	display: none;
 }

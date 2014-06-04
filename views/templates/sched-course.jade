@@ -1,7 +1,12 @@
 script#sched-course-template(type="text/x-handlebars-template")
+	h4 scheduled course view
 	.course-header
-		p. {{courseInfo.attributes.department}}{{courseInfo.attributes.code}} - {{courseInfo.attributes.name}} - Credits: {{courseInfo.attributes.credits}}
-	.course-details.
-		Description: {{courseInfo.attributes.description}}
-		Semesters Offered: {{courseInfo.attributes.semesters}}
-		Prerequisites: {{courseInfo.attributes.prereqs}}
+		p {{courseInfo.attributes.department}}{{courseInfo.attributes.code}} - {{courseInfo.attributes.name}} - Credits: {{courseInfo.attributes.credits}}
+	.course-details
+		p Description: {{courseInfo.attributes.description}}
+		p Semesters Offered: {{courseInfo.attributes.semesters}}
+		p Prerequisites: {{courseInfo.attributes.prereqs}}
+	.prereq-error
+		p This course has prerequisites that are not in your schedule.
+	.semester-error
+		p This course is not offered this semester.

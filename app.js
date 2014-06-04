@@ -32,18 +32,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.get('/', indexController.renderIndex);
-
-// app.get('/schedule')
-// app.post('/schedule')
-
-app.get('/courses', courseController.getCourses);
-
-app.get('/users/:id', userController.getSchedule);
-
 
 // Our get request for viewing the login page
-// app.get('/auth/login', authenticationController.login);
+app.get('/auth/login', authenticationController.login);
 
 // Post received from submitting the login form
 app.post('/auth/login', authenticationController.processLogin);
@@ -53,6 +44,25 @@ app.post('/auth/signup', authenticationController.processSignup);
 
 // Any requests to log out can be handled at this url
 app.get('/auth/logout', authenticationController.logout);
+
+
+// ***** IMPORTANT ***** //
+// By including this middleware (defined in our config/passport.js module.exports),
+// We can prevent unauthorized access to any route handler defined after this call
+// to .use()
+app.use(passportConfig.ensureAuthenticated);
+
+
+
+app.get('/', indexController.renderIndex);
+
+app.get('/courses', courseController.getCourses);
+
+app.get('/users/:id', userController.getSchedule);
+app.put('/users/:id', userController.update);
+
+
+
 
 
 

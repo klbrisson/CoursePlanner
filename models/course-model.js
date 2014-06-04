@@ -8,7 +8,7 @@ var Course = mongoose.model('course', {
 		semesters: [String],
 		description: String,
 		prereqs: [{
-			type: mongoose.Schema.Types.ObjectId,
+	    type: mongoose.Schema.Types.ObjectId,
       ref: 'Course'
 		}]
 });

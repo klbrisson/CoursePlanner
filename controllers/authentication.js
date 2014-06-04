@@ -19,17 +19,17 @@ var authenticationController = {
 
 	// The route-handler for the /auth/login route. Meant to be
 	// a page view that only shows login forms
-	// login: function(req, res){
-	// // Render the login jade template.
-	// // We are using the "flash" system, which are variables
-	// // that can be sent from view to view and are removed
-	// // after use. Useful for quick messages like "failed to login."
-	// // In this case, we pull any existing flash message id'd as "error"
-	// // and pass it to the view.
-	// res.render('login', {
-	//   error: req.flash('error')
-	// });
-	// },
+	login: function(req, res){
+		// Render the login jade template.
+		// We are using the "flash" system, which are variables
+		// that can be sent from view to view and are removed
+		// after use. Useful for quick messages like "failed to login."
+		// In this case, we pull any existing flash message id'd as "error"
+		// and pass it to the view.
+		res.render('login', {
+		  error: req.flash('error')
+		});
+	},
 	processLogin: function(req, res, next){
 
 		// Passport's "authenticate" method returns a method, so we store it

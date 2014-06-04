@@ -2,11 +2,9 @@
 MyApp = new Backbone.Marionette.Application();
 
 MyApp.addRegions({
-  // Create regions for the list of required courses and list of electives
+  // Create regions for the required courses, electives, and schedule
   requiredCourseRegion: '#required-course-list',
   electiveCourseRegion: '#elective-course-list',
-
-  // Region to insert Semester Layout
   scheduleRegion: '#schedule-container'
 });
 
@@ -16,31 +14,43 @@ MyApp.addInitializer(function(options) {
   // and the list of elective courses
   var requiredCourseListView = new CourseListView({
     collection: options.requiredCourses,
+    fullCourseList: options.fullCourseList,
+    thisUser: options.thisUser,
     listElId: 'required'
   });
-  var electiveCourseListView = new CourseListView({
-    collection: options.electiveCourses,
-    listElId: 'electives'
-  });
+
+  // var electiveCourseListView = new CourseListView({
+  //   collection: options.electiveCourses,
+  //   fullCourseList: options.fullCourseList,
+  //   thisUser: options.thisUser,
+  //   listElId: 'electives'
+  // });
 
   var scheduleView = new ScheduleView({
-    collection: options.userCourses
+    collection: options.userCourses,
+    fullCourseList: options.fullCourseList,
+    thisUser: options.thisUser
   })
 
 
   // Show the lists of required and elective courses in their corresponding region
   MyApp.requiredCourseRegion.show(requiredCourseListView);
-  MyApp.electiveCourseRegion.show(electiveCourseListView);
-
+  // MyApp.electiveCourseRegion.show(electiveCourseListView);
   MyApp.scheduleRegion.show(scheduleView);
   
-
 });
 
 
 
 
 $(document).ready(function() {
+  // Auto Log In
+  $('#username').val('Kelsey');
+  $('#password').val('pass');
+  $('#submit-btn').click();
+
+
+
 
   // Creates a collection of all courses and fetches them from the database
   var fullCourseList = new CourseList();
@@ -49,33 +59,39 @@ $(document).ready(function() {
   // Creates new collections by filtering the fullCourseList after
   // the data is retrieved from the database
   fullCourseList.fetch().done(function(){
+    console.log('fullCourseList', fullCourseList);
+    // // Creates a course list of required courses -- using 'CS' to filter for now
+    // var requiredCourses = new CourseList(fullCourseList.filter(function(course){
+    //   return course.attributes.department === 'CS';
+    // }))
 
-    // Creates a course list of required courses -- using 'CS' to filter for now
-    var requiredCourses = new CourseList(fullCourseList.filter(function(course){
-      return course.attributes.department === 'CS';
-    }))
-
-    // Creates a course list of elective courses -- using 'ART' to filter for now
-    var electiveCourses = new CourseList(fullCourseList.filter(function(course){
-      return course.attributes.department === 'ART';
-    }))
+    // // Creates a course list of elective courses -- using 'ART' to filter for now
+    // var electiveCourses = new CourseList(fullCourseList.filter(function(course){
+    //   return course.attributes.department === 'ART';
+    // }))
 
 
     // Creates a new user
-    var user = new User({id: userId, fullCourseList: fullCourseList});
-
+    var thisUser = new User({_id: userId, fullCourseList: fullCourseList, schedCourses: new Schedule()});
     // User Courses
     if(userId !== null){
-      user.fetch().done(function(){
+      thisUser.fetch().done(function(){
+
+        // Creates a course list of courses the user has not scheduled yet
+        var requiredCourses = new CourseList(fullCourseList.filter(function(course){
+          var userCourses = thisUser.attributes.schedCourses;
+          return userCourses.findWhere( { id: course.attributes._id }) === undefined;
+        }))
+
 
         MyApp.start({
-          electiveCourses: electiveCourses,
+          // electiveCourses: electiveCourses,
           requiredCourses: requiredCourses,
-          userCourses: user.attributes.schedCourses,
+          userCourses: thisUser.attributes.schedCourses,
           fullCourseList: fullCourseList,
-          year: 2014,
-          semester: 'semester'
+          thisUser: thisUser
         });
+
       });
     }
 
@@ -84,8 +100,8 @@ $(document).ready(function() {
       MyApp.start({
         electiveCourses: electiveCourses,
         requiredCourses: requiredCourses,
-        fullCourseList: fullCourseList,
-        semester: 'semester'
+        userCourses: thisUser.attributes.schedCourses,
+        fullCourseList: fullCourseList
       });
     }
 
