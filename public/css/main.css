@@ -3,13 +3,30 @@
 }
 
 .semester, .course-list {
-	min-height: 200px;
+	min-height: 150px;
 }
 
 .sched-error {
 	background-color: red;
 }
 
-.prereq-error, .semester-error {
+.prereq-error, .semester-error, .hide-summer {
 	display: none;
+}
+
+.course-list {
+	max-height: 600px;
+	overflow: scroll;
+}
+
+.year {
+	border-top: 1px solid grey;
+}
+
+#fixed-container {
+	position: fixed;
+}
+
+.main-content {
+	margin-bottom: 200px;
 }

@@ -1,8 +1,8 @@
 script#course-template(type="text/x-handlebars-template")
-	h4 course view
 	.course-header
-		p {{department}}{{code}} - {{name}} - Credits: {{credits}}
-	.course-details.
-		Description: {{description}}
-		Semesters Offered: {{semesters}}
-		Prerequisites: {{prereqs}}
+		h5 {{department}}{{code}} - {{name}}
+		p  Credits: {{credits}}
+	.course-details
+		p Description: {{description}}
+		p Semesters Offered: {{semesters}}
+		p Prerequisites: {{prereqs}}

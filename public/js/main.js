@@ -49,6 +49,18 @@ $(document).ready(function() {
   $('#password').val('pass');
   $('#submit-btn').click();
 
+  
+
+  $(document).on('click', '.show-summer-btn', function() {
+    $(this).hide();
+    $(this).closest('.row').find('.hide-summer').show();
+  })
+
+  $(document).on('click', '.hide-summer-btn', function() {
+    $(this).closest('.row').find('.show-summer-btn').show();
+    $(this).closest('.row').find('.hide-summer').hide();
+  })
+
 
 
 

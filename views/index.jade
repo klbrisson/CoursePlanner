@@ -1,12 +1,17 @@
 extends layout
 
+block navbar
+	include navbar
+
+
 block content
-	.container
+	.container.main-content
 		h1 Course Planner
 		.row
 			.col-xs-12.col-sm-4
-				h3 Required Courses
-				.course-list-container#required-course-list
-				h3 Elective Courses
-				.course-list-container#elective-course-list
+				#fixed-container
+					h3 Courses
+					.course-list-container#required-course-list
+				//- h3 Elective Courses
+				//- .course-list-container#elective-course-list
 			#schedule-container.col-xs-12.col-sm-8

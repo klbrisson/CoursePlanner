@@ -1,16 +1,22 @@
 script#schedule-template(type="text/x-handlebars-template")
-	h2.schedule-title Schedule
+	h3.schedule-title Schedule
 	//- - console.log('user',user)
 	- var startYear = loggedIn ? user.schedule.startYear : 2014;
 	- var endYear = loggedIn ? user.schedule.endYear : 2018;
 	- for (var year = startYear; year < endYear; year++) {
 		.year.row(id= 'year-#{year}')
-			h4 Year: #{year} - #{year + 1}
-			.col-xs-12.col-sm-6 Fall #{year}
-				ul.fall.list-unstyled.list-group.semester(id= 'f-#{year}' data-year= year data-semester='F')
-			.col-xs-12.col-sm-6 Spring #{year + 1}
-				ul.spring.list-unstyled.list-group.semester(id= 's-#{year + 1}' data-year='#{year + 1}' data-semester='S')
-			.col-xs-12.col-sm-6 Summer #{year + 1}
-				ul.summer.list-unstyled.list-group.semester(id= 'ss-#{year + 1}' data-year='#{year + 1}' data-semester='SS')
+			.row
+				h4 Fall #{year} - Summer #{year + 1}
+				.col-xs-12.col-sm-6 Fall #{year}
+					ul.fall.list-unstyled.list-group.semester(id= 'f-#{year}' data-year= year data-semester='F')
+				.col-xs-12.col-sm-6 Spring #{year + 1}
+					ul.spring.list-unstyled.list-group.semester(id= 's-#{year + 1}' data-year='#{year + 1}' data-semester='S')
+			.row
+				.col-xs-12
+					button.btn.btn-default.show-summer-btn Show Summer Semester
+					.hide-summer Summer #{year + 1}
+						ul.summer.list-unstyled.list-group.semester(id= 'ss-#{year + 1}' data-year='#{year + 1}' data-semester='SS')
+						button.btn.btn-default.hide-summer-btn Hide Summer Semester
+				
 	- }
 

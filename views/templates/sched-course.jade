@@ -1,7 +1,7 @@
 script#sched-course-template(type="text/x-handlebars-template")
-	h4 scheduled course view
 	.course-header
-		p {{courseInfo.attributes.department}}{{courseInfo.attributes.code}} - {{courseInfo.attributes.name}} - Credits: {{courseInfo.attributes.credits}}
+		h5 {{courseInfo.attributes.department}}{{courseInfo.attributes.code}} - {{courseInfo.attributes.name}}
+		p Credits: {{courseInfo.attributes.credits}}
 	.course-details
 		p Description: {{courseInfo.attributes.description}}
 		p Semesters Offered: {{courseInfo.attributes.semesters}}
