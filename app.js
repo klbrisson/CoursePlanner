@@ -15,7 +15,6 @@ var userController = require('./controllers/user-controller.js');
 var authenticationController = require('./controllers/authentication.js');
 var indexController = require('./controllers/index-controller.js');
 
-
 mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/CoursePlanner');
 
 var app = express();
@@ -30,7 +29,6 @@ app.use(flash());
 app.use(session({secret: 'secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 
 // Our get request for viewing the login page

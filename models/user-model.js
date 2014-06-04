@@ -30,12 +30,25 @@ var userSchema = mongoose.Schema({
 
 
 userSchema.pre('save', function(next){
+  var user = this;
+  console.log('user before', user);
+
+  if(user.schedule === undefined) {
+    user.schedule = {
+      startYear: 2014,
+      endYear: 2018,
+      schedCourses: []
+    };
+  }
+  
+  console.log('user after', user);
+
   
   // First, check to see if the password has been modified. If not, just move on.
   if(!this.isModified('password')) return next();
 
   // Store access to "this", which represents the current user document
-  var user = this;  
+  // var user = this;  
 
   // Generate an encryption "salt." This is a special way of increasing the
   // encryption power by wrapping the given string in a secret string. Something

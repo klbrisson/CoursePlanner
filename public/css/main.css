@@ -14,18 +14,20 @@
 	display: none;
 }
 
-.course-list {
+/*.course-list {
 	max-height: 600px;
-	overflow: scroll;
-}
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+}*/
 
 .year {
 	border-top: 1px solid grey;
 }
 
-#fixed-container {
+/*#fixed-container {
 	position: fixed;
-}
+}*/
 
 .main-content {
 	margin-bottom: 200px;
