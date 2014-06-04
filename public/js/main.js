@@ -19,23 +19,13 @@ MyApp.addInitializer(function(options) {
     listElId: 'required'
   });
 
-  // var electiveCourseListView = new CourseListView({
-  //   collection: options.electiveCourses,
-  //   fullCourseList: options.fullCourseList,
-  //   thisUser: options.thisUser,
-  //   listElId: 'electives'
-  // });
-
   var scheduleView = new ScheduleView({
     collection: options.userCourses,
     fullCourseList: options.fullCourseList,
     thisUser: options.thisUser
   })
 
-
-  // Show the lists of required and elective courses in their corresponding region
   MyApp.requiredCourseRegion.show(requiredCourseListView);
-  // MyApp.electiveCourseRegion.show(electiveCourseListView);
   MyApp.scheduleRegion.show(scheduleView);
   
 });
@@ -65,9 +55,13 @@ $(document).ready(function() {
   // Creates new collections by filtering the fullCourseList after
   // the data is retrieved from the database
   fullCourseList.fetch().done(function(){
+
+    // Not done yet - function to create a prereqCourses property on
+    // each course to display course codes rather than course ids
     fullCourseList.map(function(course) {
       course.populatePrereqCourses(fullCourseList);
     })
+
     // Creates a new user
     var thisUser = new User({_id: userId, fullCourseList: fullCourseList, schedCourses: new Schedule()});
     // User Courses
