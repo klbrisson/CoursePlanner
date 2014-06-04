@@ -16,7 +16,7 @@ var authenticationController = require('./controllers/authentication.js');
 var indexController = require('./controllers/index-controller.js');
 
 
-mongoose.connect('mongodb://localhost/CoursePlanner');
+mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/CoursePlanner');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -52,8 +52,6 @@ app.get('/auth/logout', authenticationController.logout);
 // to .use()
 app.use(passportConfig.ensureAuthenticated);
 
-
-
 app.get('/', indexController.renderIndex);
 
 app.get('/courses', courseController.getCourses);
@@ -62,13 +60,7 @@ app.get('/users/:id', userController.getSchedule);
 app.put('/users/:id', userController.update);
 
 
-
-
-
-
-
-var port = Number(process.env.PORT || 3000)
-
+var port = Number(process.env.PORT || 3000);
 
 var server = app.listen(port, function() {
 	console.log('Express server listening on port ' + server.address().port);

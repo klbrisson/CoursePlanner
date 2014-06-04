@@ -1,6 +1,9 @@
-{
+{ 
+  "scripts" : {
+    "start" : "node app.js"
+  },
   "dependencies": {
-	"bcrypt": "0.x",
+    "bcrypt": "0.x",
     "body-parser": "1.x",
     "connect-flash": "0.x",
     "cookie-parser": "1.x",
