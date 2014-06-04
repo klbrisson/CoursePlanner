@@ -5,7 +5,7 @@ script#sched-course-template(type="text/x-handlebars-template")
 	.course-details
 		p Description: {{courseInfo.attributes.description}}
 		p Semesters Offered: {{courseInfo.attributes.semesters}}
-		p Prerequisites: {{courseInfo.attributes.prereqs}}
+		//- p Prerequisites: {{courseInfo.attributes.prereqCourses}}
 	.prereq-error
 		p This course has prerequisites that are not in your schedule.
 	.semester-error

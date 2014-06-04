@@ -1,0 +1,28 @@
+.modal.fade#sched-settings(tabindex="-1" aria-labelledby="schedSettings" aria-hidden="true")
+	.modal-dialog.modal-md
+		.modal-content
+			.modal-header
+				button.close(type="button" data-dismiss="modal" aria-hidden="true") &times;
+				h4.modal-title Schedule Settings
+			.modal-body
+				.select-year-form.row
+					form.form-group
+						.col-xs-6
+							label(for="star-year") First Year
+							select#start-year.form-control
+								option(selected="selected") 2014
+								option 2015
+								option 2016
+						.col-xs-6
+							label(for="star-year") Last Year
+							select#end-year.form-control
+								option(selected="selected") 2014
+								option 2015
+								option 2016
+			.modal-footer
+				button#save-sched-settings.btn.btn-primary(type="button" data-dismiss="modal" aria-hidden="true") Save
+
+
+
+
+					

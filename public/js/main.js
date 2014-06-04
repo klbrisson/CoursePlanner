@@ -65,7 +65,9 @@ $(document).ready(function() {
   // Creates new collections by filtering the fullCourseList after
   // the data is retrieved from the database
   fullCourseList.fetch().done(function(){
-
+    fullCourseList.map(function(course) {
+      course.populatePrereqCourses(fullCourseList);
+    })
     // Creates a new user
     var thisUser = new User({_id: userId, fullCourseList: fullCourseList, schedCourses: new Schedule()});
     // User Courses

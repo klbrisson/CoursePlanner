@@ -1,7 +1,3 @@
-body {
-	/*background-color: #5A646E;*/
-	/*padding-top: 50px;*/
-}
 
 .main-content {
 	padding-bottom: 300px;
@@ -37,6 +33,7 @@ body {
 .course-list {
 	border: 1px solid #DEDEDE;
 	max-height: 500px;
+	max-width: 350px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }

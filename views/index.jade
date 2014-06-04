@@ -9,8 +9,11 @@ block content
 		.row
 			.col-xs-12.col-sm-4
 				#fixed-container
-					h3 Courses
-					.course-list-container#required-course-list
+					.row
+						button.btn.btn-default(data-toggle="modal" data-target="#sched-settings") Schedule Settings
+					.row
+						h3 Courses
+						.course-list-container#required-course-list
 				//- h3 Elective Courses
 				//- .course-list-container#elective-course-list
 			#schedule-container.col-xs-12.col-sm-8
