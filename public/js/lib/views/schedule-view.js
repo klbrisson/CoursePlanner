@@ -13,7 +13,11 @@ var ScheduleView = Backbone.Marionette.CompositeView.extend({
     $('.semester').sortable({
       connectWith: '.course-list, .semester',
       receive: this.receiveCourse.bind(this),
-      remove: this.removeCourse.bind(this)
+      remove: this.removeCourse.bind(this),
+      appendTo: 'body',
+      containment: 'window',
+      scroll: false,
+      helper: 'clone'
     });
   },
 

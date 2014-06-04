@@ -1,34 +1,66 @@
+body {
+	/*background-color: #5A646E;*/
+	/*padding-top: 50px;*/
+}
+
+.main-content {
+	padding-bottom: 300px;
+	background-color: #fff;
+}
+
+.page-header {
+	margin-top: -20px;
+	height: 250px;
+	background-color: lightgrey;
+}
+
+.page-header-content {
+	padding-top: 25px;
+}
+
 .course-details {
 	display: none;
 }
 
 .semester, .course-list {
-	min-height: 150px;
+	min-height: 200px;
 }
 
 .sched-error {
-	background-color: red;
+	background-color: #FFD9D9;
 }
 
-.prereq-error, .semester-error, .hide-summer {
+.prereq-error, .semester-error, .hidden {
 	display: none;
 }
 
-/*.course-list {
-	max-height: 600px;
+.course-list {
+	border: 1px solid #DEDEDE;
+	max-height: 500px;
 	overflow-y: scroll;
 	overflow-x: hidden;
-
-}*/
-
-.year {
-	border-top: 1px solid grey;
 }
 
-/*#fixed-container {
-	position: fixed;
-}*/
 
-.main-content {
-	margin-bottom: 200px;
+.year {
+	border-top: 1px solid #DEDEDE;
+}
+
+#fixed-container {
+	position: fixed;
+}
+
+
+.show-summer-btn, .hide-summer-btn {
+	margin: 0 auto;
+	display: block;
+	border: none;
+}
+
+.border-left {
+	border-left: 1px solid #F0F0F0;
+}
+
+.border-right {
+	border-right: 1px solid #F0F0F0;
 }

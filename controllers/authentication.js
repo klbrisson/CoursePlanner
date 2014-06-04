@@ -67,7 +67,6 @@ var authenticationController = {
 	var user = new User({
 	  username: req.body.username,
 	  password: req.body.password
-	  // email: req.param('email')
 	});
 
 	// Now that the user is created, we'll attempt to save them to the

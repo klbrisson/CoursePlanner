@@ -1,4 +1,4 @@
-nav#main-navbar.navbar.navbar-default
+nav#main-navbar.navbar.navbar-default.navbar-fixed-top
 	.container-fluid
 		.navbar-header
 			button.navbar-toggle(type="button" data-toggle="collapse")
@@ -9,7 +9,7 @@ nav#main-navbar.navbar.navbar-default
 			a.navbar-brand(href="#") Course Planner
 		.collapse.navbar-collapse#main-nav
 			ul.nav.navbar-nav.navbar-left
-				li: a(href="/") My Schedule
+				li: a(href="/") #{user.username}'s Schedule
 				//- li: a(href="#") Weekly Schedule
 				li: a(href="#") Full Course Catalog
 			ul.nav.navbar-nav.navbar-right
@@ -18,3 +18,4 @@ nav#main-navbar.navbar.navbar-default
 					li: a(href="/auth/logout") Log Out
 				//- else
 				//- 	li: a(href="#" data-toggle="modal" data-target="#signInBox") Sign In
+//- #navbar-body-padding

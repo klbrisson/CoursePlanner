@@ -45,15 +45,14 @@ MyApp.addInitializer(function(options) {
 
 $(document).ready(function() {
 
-
   $(document).on('click', '.show-summer-btn', function() {
     $(this).hide();
-    $(this).closest('.row').find('.hide-summer').show();
+    $(this).closest('.row').find('.summer-container').removeClass('hidden');
   })
 
   $(document).on('click', '.hide-summer-btn', function() {
     $(this).closest('.row').find('.show-summer-btn').show();
-    $(this).closest('.row').find('.hide-summer').hide();
+    $(this).closest('.row').find('.summer-container').addClass('hidden');
   })
 
 
@@ -66,17 +65,6 @@ $(document).ready(function() {
   // Creates new collections by filtering the fullCourseList after
   // the data is retrieved from the database
   fullCourseList.fetch().done(function(){
-    console.log('fullCourseList', fullCourseList);
-    // // Creates a course list of required courses -- using 'CS' to filter for now
-    // var requiredCourses = new CourseList(fullCourseList.filter(function(course){
-    //   return course.attributes.department === 'CS';
-    // }))
-
-    // // Creates a course list of elective courses -- using 'ART' to filter for now
-    // var electiveCourses = new CourseList(fullCourseList.filter(function(course){
-    //   return course.attributes.department === 'ART';
-    // }))
-
 
     // Creates a new user
     var thisUser = new User({_id: userId, fullCourseList: fullCourseList, schedCourses: new Schedule()});
@@ -89,7 +77,6 @@ $(document).ready(function() {
           var userCourses = thisUser.attributes.schedCourses;
           return userCourses.findWhere( { id: course.attributes._id }) === undefined;
         }))
-
 
         MyApp.start({
           // electiveCourses: electiveCourses,

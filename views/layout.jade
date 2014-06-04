@@ -7,15 +7,17 @@ html(lang='en')
 		link(rel="stylesheet", href="/css/main.css")
 	body
 		//- include signInModal
-		block navbar
+		//- block navbar
+		include header
 		block content
 
 		//- Handlebars templates
-		include templates/course-list
-		include templates/course-search
-		include templates/course
-		include templates/schedule
-		include templates/sched-course
+		if loggedIn
+			include templates/course-list
+			include templates/course-search
+			include templates/course
+			include templates/schedule
+			include templates/sched-course
 
 		//- Vendor cdns
 		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")

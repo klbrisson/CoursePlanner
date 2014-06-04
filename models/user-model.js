@@ -31,7 +31,6 @@ var userSchema = mongoose.Schema({
 
 userSchema.pre('save', function(next){
   var user = this;
-  console.log('user before', user);
 
   if(user.schedule === undefined) {
     user.schedule = {
@@ -40,9 +39,6 @@ userSchema.pre('save', function(next){
       schedCourses: []
     };
   }
-  
-  console.log('user after', user);
-
   
   // First, check to see if the password has been modified. If not, just move on.
   if(!this.isModified('password')) return next();

@@ -13,7 +13,11 @@ var CourseListView = Backbone.Marionette.CompositeView.extend({
     $('.course-list').sortable({
       connectWith: '.semester',
       receive: this.receiveCourse.bind(this),
-      remove: this.removeCourse.bind(this)
+      remove: this.removeCourse.bind(this),
+      appendTo: 'body',
+      containment: 'window',
+      scroll: false,
+      helper: 'clone'
     })
   },
   
