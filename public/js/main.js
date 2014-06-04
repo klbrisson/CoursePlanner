@@ -44,12 +44,7 @@ MyApp.addInitializer(function(options) {
 
 
 $(document).ready(function() {
-  // Auto Log In
-  $('#username').val('Kelsey');
-  $('#password').val('pass');
-  $('#submit-btn').click();
 
-  
 
   $(document).on('click', '.show-summer-btn', function() {
     $(this).hide();
