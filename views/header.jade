@@ -4,8 +4,5 @@
 			h1 Course Planner
 		.col-xs-2
 			if loggedIn
-			ul.nav.navbar-nav.navbar-right
-				//- li: a(href="#")= user.username
-				li: a.logout(href="/auth/logout") Log Out
-		//- if loggedIn
-		//- 	h1 logged in
+				ul.nav.navbar-nav.navbar-right
+					li: a.logout(href="/auth/logout") Log Out
