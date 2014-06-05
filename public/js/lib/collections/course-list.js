@@ -1,4 +1,5 @@
 var CourseList = Backbone.Collection.extend({
     model: Course,
-    url: '/courses'
+    url: '/courses',
+    comparator: 'department'
 });

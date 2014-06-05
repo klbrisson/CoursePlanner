@@ -1,22 +1,24 @@
 extends layout
 
 block content
-	.container.main-content
+	.container-fluid
 		.row
-			.col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3
-				h3 Sign Up
-				form(method="post" action="/auth/signup")
-					.form-group
-						input.form-control#username-sign-up(type="text" name="username" placeholder="Username")
-					.form-group
-						input.form-control#password-sign-up(type="password" name="password" placeholder="Password")
-					.form-group
-						input.btn.btn-primary(type="submit")
-				h3 Sign In
-				form(method="post" action="/auth/login")
-					.form-group
-						input.form-control#username(type="text" name="username" placeholder="Username")
-					.form-group
-						input.form-control#password(type="password" name="password" placeholder="Password")
-					.form-group
-						input.btn.btn-primary#submit-btn(type="submit")
+			.col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
+				.login-container
+					.login-form
+						h3 Sign Up
+						form(method="post" action="/auth/signup")
+							.form-group
+								input.form-control#username-sign-up(type="text" name="username" placeholder="Username")
+							.form-group
+								input.form-control#password-sign-up(type="password" name="password" placeholder="Password")
+							.form-group
+								input.btn.btn-primary(type="submit")
+						h3 Sign In
+						form(method="post" action="/auth/login")
+							.form-group
+								input.form-control#username(type="text" name="username" placeholder="Username")
+							.form-group
+								input.form-control#password(type="password" name="password" placeholder="Password")
+							.form-group
+								input.btn.btn-primary#submit-btn(type="submit")

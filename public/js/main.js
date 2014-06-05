@@ -56,11 +56,11 @@ $(document).ready(function() {
   // the data is retrieved from the database
   fullCourseList.fetch().done(function(){
 
-    // Not done yet - function to create a prereqCourses property on
-    // each course to display course codes rather than course ids
-    fullCourseList.map(function(course) {
-      course.populatePrereqCourses(fullCourseList);
-    })
+    // // Not done yet - function to create a prereqCourses property on
+    // // each course to display course codes rather than course ids
+    // fullCourseList.map(function(course) {
+    //   course.populatePrereqCourses(fullCourseList);
+    // })
 
     // Creates a new user
     var thisUser = new User({_id: userId, fullCourseList: fullCourseList, schedCourses: new Schedule()});

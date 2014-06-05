@@ -15,7 +15,7 @@ var CourseListView = Backbone.Marionette.CompositeView.extend({
       receive: this.receiveCourse.bind(this),
       remove: this.removeCourse.bind(this),
       appendTo: 'body',
-      containment: 'window',
+      containment: 'document',
       scroll: false,
       helper: 'clone'
     })
